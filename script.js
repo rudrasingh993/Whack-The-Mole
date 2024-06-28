@@ -5,17 +5,17 @@ let lastHole;
 let timeUp = false;
 let score = 0;
 
-//create a function to make a random time for mole to pop from the hole
+// Create a function to make a random time for mole to pop from the hole
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-function randomHole(holes){
-    const index  = Math.floor(Math.random() * holes.length);
+function randomHole(holes) {
+    const index = Math.floor(Math.random() * holes.length);
     const hole = holes[index];
 
-    //prevent same hole from getting the same number
-    if (hole === lastHole){
+    // Prevent same hole from getting the same number
+    if (hole === lastHole) {
         return randomHole(holes);
     }
     lastHole = hole;
@@ -23,12 +23,12 @@ function randomHole(holes){
 }
 
 function peep() {
-    const time = randomTime(480, 600); //get a random time to determine how long mole should peep
-    const hole = randomHole(holes); //get the random hole from the randomHole function
-    hole.classList.add('up'); //add the CSS class so selected mole can "pop up"
+    const time = randomTime(450, 600); // Get a random time to determine how long mole should peep
+    const hole = randomHole(holes); // Get the random hole from the randomHole function
+    hole.classList.add('up'); // Add the CSS class so selected mole can "pop up"
     setTimeout(() => {
-        hole.classList.remove('up'); //make the selected mole "pop down" after a random time
-        if(!timeUp) {
+        hole.classList.remove('up'); // Make the selected mole "pop down" after a random time
+        if (!timeUp) {
             peep();
         }
     }, time);
@@ -39,15 +39,22 @@ function startGame() {
     timeUp = false;
     score = 0;
     peep();
-    setTimeout(() => timeUp = true, 25000) //show random moles for 15 seconds
+    setTimeout(() => timeUp = true, 25000) // Show random moles for 15 seconds
 }
 
-function wack(e){
-    if(!e.isTrusted) return; //** new thing I learned */
+function wack(e) {
+    if (!e.isTrusted) return; // ** new thing I learned */
     score++;
-    this.parentNode.classList.remove('up'); //this refers to item clicked
+    this.parentNode.classList.remove('up'); // This refers to item clicked
     scoreBoard.textContent = score;
+    showSparkler(this); // Show sparkler effect
 }
 
-moles.forEach(mole => mole.addEventListener('click', wack))
+function showSparkler(mole) {
+    const sparkler = document.createElement('div');
+    sparkler.classList.add('sparkler');
+    mole.parentNode.appendChild(sparkler);
+    setTimeout(() => sparkler.remove(), 500); // Remove the sparkler after the animation
+}
 
+moles.forEach(mole => mole.addEventListener('click', wack));
