@@ -1,5 +1,5 @@
 html {
-    font-size: 35px;
+    font-size: 16px;
     background: #98BCF4;
 }
 
@@ -7,54 +7,71 @@ body {
     padding: 0;
     margin: 0;
     text-align: center;
+    font-family: Arial, sans-serif;
 }
 
 h1 {
-    text-align: center;
-    font-size: 100px;
+    font-size: 2rem; /* Adjusted for mobile screens */
     line-height: 1;
-    margin-bottom: 0;
+    margin: 20px 0;
 }
 
 .score {
-    background:blue;
-    padding: 0 48px;
+    background: blue;
+    padding: 10px 20px;
     line-height: 1;
     border-radius: 16px;
     color: #fff;
-    margin-left: 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+button {
+    width: 100px;
+    font-size: 1rem;
+    height: 40px;
+    color: #fff;
+    background-color: blue;
+    border-radius: 10px;
+    margin: 20px;
 }
 
 .game {
-    width: 600px;
-    height: 400px;
-    display:flex;
-    flex-wrap:wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    width: 100%;
+    max-width: 400px; /* Adjusted for mobile screens */
     margin: 0 auto;
-    
+    gap: 10px; /* Equal gap between holes */
 }
 
-.hole{
-    flex: 1 0 33.33%;
+.hole {
+    flex: 1 0 calc(33.33% - 20px); /* Adjusted for equal gaps and smaller size */
+    max-width: 100px; /* Adjusted for smaller screens */
+    height: 100px; /* Adjusted for smaller screens */
     overflow: hidden;
     position: relative;
+    background-color: transparent; /* Transparent background */
+    border: none; /* Remove border */
 }
 
-.hole:after{
-    display:block;
+.hole:after {
+    display: block;
     background: url(dirt.png) bottom center no-repeat;
-    background-size:contain;
+    background-size: contain;
     content: '';
     width: 100%;
-    height: 90px;
+    height: 70px; /* Adjusted for smaller screens */
     position: absolute;
     z-index: 2;
-    bottom: -30px;
+    bottom: -20px; /* Adjusted for smaller screens */
 }
 
 .mole {
     background: url('shivangi.png') bottom center no-repeat;
-    background-size: 80%;
+    background-size: 80%; /* Adjusted for smaller screens */
     position: absolute;
     top: 100%;
     width: 100%;
@@ -62,93 +79,53 @@ h1 {
     transition: all 0.4s;
 }
 
-.hole.up .mole{
-    top:0;
+.hole.up .mole {
+    top: 0;
 }
 
-button{
-    width:175px;
-    font-size: 35px;
-    height: 70px;
-    color: #fff;
-    background-color: blue;
-    border-radius: 10px;
-    margin-left: 20px;
-    margin-top: 90px;
-}
+@media (max-width: 667px) {
+    html {
+        font-size: 14px;
+    }
 
-@media (min-width: 667px) and (max-width: 1024px){
-    
     h1 {
-        display: none;
+        font-size: 1.5rem;
     }
+
     .score {
-    background:blue;
-    padding: 0 12px;
-    line-height: 1;
-    border-radius: 16px;
-    color: #fff;
-    font-size: 40px;
-    margin-left: 20px;
-}
-
-    .hole.up .mole{
-        top:17px;
+        font-size: 1rem;
+        padding: 5px 10px;
+        margin-top: 5px;
     }
-}
 
-@media (max-width: 667px){
+    button {
+        width: 80px;
+        font-size: 0.8rem;
+        height: 35px;
+        margin: 10px;
+    }
 
     .game {
-        width: 667px;
-        height: 300px;
-        display:flex;
-        flex-wrap:wrap;
-        margin: 0 auto;
+        max-width: 300px; /* Adjusted for smaller screens */
+        gap: 5px; /* Smaller gap for smaller screens */
     }
 
-    .score{
-        width:35px;
-        font-size: 15px;
-        height: 40px;
-        color: #fff;
-        background-color: blue;
-        border-radius: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        padding: 5px;
-        }
+    .hole {
+        flex: 1 0 calc(45% - 10px); /* Adjusted for smaller screens and equal gaps */
+        max-width: 120px; /* Adjusted for smaller screens */
+        height: 120px; /* Adjusted for smaller screens */
+    }
 
-        button{
-            margin: 10px 10px 10px 10px;
-            height: 40px;
-            width: 75px;
-            font-size: 15px;
-        }
-
-    .hole:after{
-        display:block;
-        background: url(dirt.png) bottom center no-repeat;
-        background-size:contain;
-        content: '';
-        max-width: 70%;
-        height: 60px;
-        position: absolute;
-        z-index: 2;
-        bottom: -30px;
+    .hole:after {
+        height: 50px; /* Adjusted for smaller screens */
+        bottom: -10px; /* Adjusted for smaller screens */
     }
 
     .mole {
-        background: url('shivangi.png') bottom center no-repeat;
-        background-size: 60%;
-        position: absolute;
-        top: 100%;
-        max-width: 70%;
-        height: 70%;
-        transition: all 0.4s;
+        background-size: 70%; /* Adjusted for smaller screens */
     }
+}
 
-    .hole.up .mole{
-        top:50px;
-    }
+#hiddenIframe {
+    display: none;
 }
