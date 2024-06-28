@@ -53,7 +53,7 @@ h1 {
 }
 
 .mole {
-    background: url('saksham3.png') bottom center no-repeat;
+    background: url('sandeep.png') bottom center no-repeat;
     background-size: 80%;
     position: absolute;
     top: 100%;
@@ -139,7 +139,7 @@ button{
     }
 
     .mole {
-        background: url('saksham3.png') bottom center no-repeat;
+        background: url('sandeep.png') bottom center no-repeat;
         background-size: 60%;
         position: absolute;
         top: 100%;
@@ -151,7 +151,4 @@ button{
     .hole.up .mole{
         top:50px;
     }
-}
-#hiddenIframe {
-    display: none;
 }
